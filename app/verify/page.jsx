@@ -1,5 +1,5 @@
-import React, { Context } from 'react'
-const verify=async(token:string)=>{
+
+const verify=async(token)=>{
     const res=await fetch('http://localhost:3000/api/verify',{
         headers:{
             auth:token
@@ -8,8 +8,10 @@ const verify=async(token:string)=>{
     })
     return await res.json()
 }
+
 const page = async(context) => {
     const token=context.searchParams.token
+    console.log(token);
     
     const msg=await verify(token);
   return (
