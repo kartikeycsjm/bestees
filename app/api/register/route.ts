@@ -19,7 +19,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             age
         });
         const token=jwt.sign({email},'khushboo',{expiresIn:'1hr'})
-        const vLink=`http://localhost:3000/verify?token=${token}`
+        const vLink=`${process.env.DEV}/verify?token=${token}`
         await transporter.sendMail({
             from:'kartikeymishracsjm@gmail.com',
             to:email,
